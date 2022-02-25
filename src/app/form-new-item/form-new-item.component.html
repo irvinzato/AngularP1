@@ -1,0 +1,7 @@
+<div>
+    <form action="">
+        <label for="">Nueva {{label}} </label>
+        <input type="text" id="newItem" #newItem>
+        <button (click)="onAddNewItem(newItem.value)" [ngClass]="[className]">Agregar</button>
+    </form>
+</div>
