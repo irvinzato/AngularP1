@@ -25,4 +25,10 @@ export class AppComponent {
   clearCity(): void {
     this.selection = null;
   }
+
+  counterRender(): boolean {          //Metodo para saber cuando esta renderizando angular, con el cambio en el componente de cada hijo se evita renderizar cuando es inecesario
+    console.log('Renderice en app');
+    return true;
+  }
+
 }

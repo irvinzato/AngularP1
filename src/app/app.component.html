@@ -2,10 +2,9 @@
     <h2>Utilizando ngIf, ngFor y ngModel</h2>
     <p *ngIf="name" >Utilizando data binding, ngModel: {{name}} </p>
     <input type="text" [(ngModel)]="name" >
-    
     <ul>
+        <app-cities *ngFor="let city of cities" (eventoEnCity)="cityClick($event)" [city]=city [selection]=selection></app-cities>
         <!-- <li [ngClass]="'selected'" > {{city}} </li> Podemos trabaja ngClass con string, arreglos u objetos. Abajo se trabaja con objetos, puede tener mas de una validacion-->
-        <li *ngFor="let city of cities" (click)="cityClick(city)" [ngClass]="{'selected': city == selection }" > {{city}} </li>
     </ul>
 </div>
 
