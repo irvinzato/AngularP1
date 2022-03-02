@@ -1,0 +1,42 @@
+<h1>Aprenderemos fomularios REACTIVOS</h1>
+                                            <!--Ahora usarmeos formGroup igualado al nombre de nuestro formulario y debemos crear esa propiedad en el .ts-->
+    <form (ngSubmit)="onSubmit()" [formGroup]="contactForm">
+        <div>
+        <label for="name">Name</label>                              
+            <input type="text" id="name" name="name" required formControlName="name" >
+            <!--Revisar por que no muestra si se agrega el &&
+                *ngIf="contactForm.get('name')?.touched && contactForm.get('name')?.errors?.['required']"
+            Aqui la validacion no es con hidden, accedemos al formulario con .get() le pasamos el nombre del campo
+            y le decimos si este campo a sido tocado tendremos esa validacion
+            -->
+            <p *ngIf="contactForm.get('name')?.touched" >
+                this field is required</p>
+            <!-- <p *ngIf="contactForm.get('name')?.touched && contactForm.get('name')?.errors?.['minlength']" >
+                Debe tener mas de 3 caracteres</p> -->
+        </div>
+        <div>
+            <label for="checkAdult">Are you have 18 years of age?</label>
+            <input type="checkbox" id="checkAdult" name="checkAdult"  required formControlName="checkAdult" >
+            <!-- <p [hidden]="checkAdult.valid || checkAdult.pristine">this field is required</p> -->
+        </div>
+        <div>
+            <label for="department">Department</label>
+            <select name="department" id="department" formControlName="department">
+                <option selected>Open this select menu</option>
+                <option value="marketing">Marketing</option>
+                <option value="sales">Sales</option>
+                <option value="other">Other</option>
+            </select>
+            <p>this field is required</p>
+        </div>
+        <div>
+            <label for="comment">Comment</label>
+            <textarea name="comment" id="comment" rows="4"  required formControlName="comment" ></textarea>
+            <!-- <p [hidden]="comment.valid || comment.pristine">this field is required</p> -->
+        </div>
+        <div>
+                                <!--disable para que solo sea habilitado el boton cuando este lleno-->
+            <button type="submit" [disabled]="contactForm.invalid" >Send</button>
+        </div>
+    </form>
+    <!--Hasta ahora pura maquetacion, 12:00 empieza la parte correspondiente a Angular y formularios-->

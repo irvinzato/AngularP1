@@ -1,5 +1,5 @@
-<li (click)="clickLi(city)" [ngClass]="{'selected': city == selection }"> {{city}} </li>
-
+<li (click)="clickLi(city)" [ngClass]="{'selected': city == selection }"> {{city | titlecase}} </li>
+                                                                        <!--| titlecase es un pipe de Angular que pone la primer letra mayuscula-->
 <!--SOLO PARA PROBAR RENDERIZACION
 <p>contador de renderizacion: {{counterRender()}} </p>
 -->

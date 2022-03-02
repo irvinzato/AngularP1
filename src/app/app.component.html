@@ -2,13 +2,18 @@
     <h2>Utilizando ngIf, ngFor y ngModel</h2>
     <p *ngIf="name" >Utilizando data binding, ngModel: {{name}} </p>
     <input type="text" [(ngModel)]="name" >
-    <ul>
-        <app-cities *ngFor="let city of cities" (eventoEnCity)="cityClick($event)" [city]=city [selection]=selection></app-cities>
-        <!-- <li [ngClass]="'selected'" > {{city}} </li> Podemos trabaja ngClass con string, arreglos u objetos. Abajo se trabaja con objetos, puede tener mas de una validacion-->
-    </ul>
+</div>
+
+<div>
+    <input type="text" class="form-control" placeholder="Filter...." [(ngModel)]="criterio">
 </div>
 
 <div class="segundaSeccion">
+    <h2>Utilizando Decoradores Input, Output, Eventos y Pipes</h2>
+    <ul>
+        <app-cities *ngFor="let city of (cities | filter:criterio)" (eventoEnCity)="cityClick($event)" [city]=city [selection]=selection></app-cities>
+        <!-- <li [ngClass]="'selected'" > {{city}} </li> Podemos trabaja ngClass con string, arreglos u objetos. Abajo se trabaja con objetos, puede tener mas de una validacion-->
+    </ul>
     <!--Aqui estamos recibiendo la EMICION del hijo y mandando a llamar nuestro metodo con el evento-->
     <app-form-new-item (newItemEvent)="addCity($event)" [label]="'Ciudad'"  [className]="'boton-primary'" ></app-form-new-item>
 </div>
@@ -17,3 +22,28 @@
     <p>Tu ciudad es: {{selection}} </p>
     <app-button (click)="clearCity()" [color]="'blue'" [label]="'Limpia la ciudad'"></app-button>
 </div>
+
+<hr>
+
+<div class="contenedorFormulario">
+    <app-contact></app-contact>
+</div>
+
+<hr>
+
+<div class="contenedorFormularioReactivo">
+    <app-contact-reactive></app-contact-reactive>
+</div>
+
+
+
+
+
+
+<!--PIPES
+<p> {{'6/15/15, 9:12 AM' | date:'full'}} </p>
+<p> {{'1/02/96, 9:12 AM' | date:'full' | uppercase}} </p>
+PIPE de angular para fechas, se puedeb combinar mas de 1 Pipe
+<p> {{'123' | currency }} </p>
+<p> {{'123' | currency:'EUR' }} </p>
+-->

@@ -1,0 +1,36 @@
+<h1>Aprenderemos fomularios template-drive(cuando es sencillo)</h1>
+    
+    <p> {{contactForm.value | json }} </p>
+    <form (ngSubmit)="onSubmit(contactForm)" #contactForm = "ngForm">
+        <div>
+        <label for="name">Name</label>                              <!--#name="ngModel" es una variable de referencia -->
+            <input type="text" id="name" name="name" [(ngModel)]="model.name" required #name="ngModel">
+            <!--.valid y .pristine viene en la documentacion de ANGULAR-->
+            <p [hidden]="name.valid || name.pristine" >this field is required</p>
+        </div>
+        <div>
+            <label for="checkAdult">Are you have 18 years of age?</label>
+            <input type="checkbox" id="checkAdult" name="checkAdult" [(ngModel)]="model.checkAdult" required #checkAdult="ngModel">
+            <p [hidden]="checkAdult.valid || checkAdult.pristine">this field is required</p>
+        </div>
+        <div>
+            <label for="department">Department</label>
+            <select name="department" id="department" [(ngModel)]="model.department">
+                <option selected>Open this select menu</option>
+                <option value="marketing">Marketing</option>
+                <option value="sales">Sales</option>
+                <option value="other">Other</option>
+            </select>
+            <p>this field is required</p>
+        </div>
+        <div>
+            <label for="comment">Comment</label>
+            <textarea name="comment" id="comment" rows="4" [(ngModel)]="model.comment" required #comment="ngModel"></textarea>
+            <p [hidden]="comment.valid || comment.pristine">this field is required</p>
+        </div>
+        <div>
+                                <!--disable para que solo sea habilitado el boton cuando este lleno-->
+            <button type="submit" [disabled]="contactForm.invalid" >Send</button>
+        </div>
+    </form>
+    <!--Hasta ahora pura maquetacion, 12:00 empieza la parte correspondiente a Angular y formularios-->

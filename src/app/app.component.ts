@@ -9,6 +9,7 @@ export class AppComponent {
 
   cities: string[] = ['Ciudad de Mexico', 'Estado de Mexico', 'Toluca'];
   selection!: string;
+  criterio: string= '';
 
   name!: string;
   title: string = 'Usando interpolacion';

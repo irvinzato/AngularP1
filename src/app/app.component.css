@@ -1,4 +1,7 @@
-.unselected{
-    background-color: rgb(2, 0, 95);
-    color: #fff;
+.primerSeccion{
+    margin: 10px 30px;
+}
+
+.segundaSeccion{
+    margin-top: 40px;
 }
